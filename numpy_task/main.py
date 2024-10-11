@@ -4,7 +4,7 @@ a = np.array([3, 2, 1], dtype=np.uint8)
 
 assert a.dtype == "uint8"
 
-b = np.array([[-2,-1,0,1,2],[-2,-1,0,1,2],[-2,-1,0,1,2],[-2,-1,0,1,2],[-2,-1,0,1,2]])
+b = np.arange(-12,13,1).reshape(5,5)
 
 assert b.shape == (5, 5) and b.sum() == 0
 
@@ -48,7 +48,7 @@ kl = k**l
 assert np.all(kl == np.array([1, 4, 27, 64, 625]))
 
 m = np.array([2, 2, 2, 3, 3, 3])
-mc = np.mean(m==2)
+mc = m.std()
 
 assert mc == 0.5
 
