@@ -3,7 +3,7 @@ import os
 
 directory = 'images'
 images=[]
-pencils_set={}
+pencils_set=0
 
 for i in range(12):
     filename = f'img ({i+1}).jpg'
@@ -37,15 +37,6 @@ for i,img in enumerate(images):
                     break
             if not color_exist:
                 cur_image_pencils[f"{int(color)}"]=1
-    for key in cur_image_pencils.keys():
-        color_found=False
-        for noise in range(-5, 6, 1):
-            new_key=str(int(key)+noise)
-            if new_key in pencils_set.keys():
-                pencils_set[new_key]=max(pencils_set[new_key], cur_image_pencils[key])
-                color_found=True
-                break
-        if not color_found:
-            pencils_set[key]=cur_image_pencils[key]
+    pencils_set+=sum(cur_image_pencils.values())
     print(f"На изображении {i} - {sum(cur_image_pencils.values())} карандаш(-ей/-а)")
-print(f"Всего в наборе {sum(pencils_set.values())} карандаш(-ей/-а).")
+print(f"Всего в наборе {pencils_set} карандаш(-ей/-а).")
